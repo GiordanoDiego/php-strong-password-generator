@@ -35,6 +35,16 @@
                 <div class="row">
                     <div class="col-12" >
                         <form action="" method="$_GET">
+                            <div class="mb-2">
+                                <input type="checkbox" id="containsNum" name="containsNum" value="1" checked>
+                                <label for="containsNum"> Numeri </label>
+                                
+                                <input type="checkbox" id="containsLett" name="containsLett" value="1"  checked>
+                                <label for="containsLett"> Lettere </label>
+                                
+                                <input type="checkbox" id="containsSC" name="containsSC" value="1" checked>
+                                <label for="containsSC"> Simboli speciali (*&?!-) </label>
+                            </div>
                             <label for="lengthPSW">Inserisci lunghezza password da generare: </label>
                             <input type="number" id="lengthPSW" min="8" max="20" name="lengthPSW">
                             <button class=" ms-2 btn btn-success">Genera!</button>
@@ -47,9 +57,17 @@
                     <?php 
                         if(isset($_GET["lengthPSW"]) && !empty($_GET["lengthPSW"])){ //controllo sl'array get[lengthPSW] esiste o se è vuoto
                             $_SESSION["pswLength"] = $_GET["lengthPSW"];
-                            var_dump($_SESSION["pswLength"]);
-                            $_SESSION["pswGenerated"] = getName($_GET["lengthPSW"]);
-                            var_dump($_SESSION["pswGenerated"]);
+                           
+                            if(!isset($_GET["containsNum"])) {
+                                $_GET["containsNum"] = 0;
+                            }
+                            if(!isset($_GET["containsLett"])) {
+                                $_GET["containsLett"] = 0;
+                            }
+                            if(!isset($_GET["containsSC"])) {
+                                $_GET["containsSC"] = 0;
+                            }
+                            $_SESSION["pswGenerated"] = getName($_GET["lengthPSW"], $_GET["containsNum"], $_GET["containsLett"], $_GET["containsSC"]);
                             header('Location: ./passwordGenerated.php');
                         }else{
                             echo '<p class="text-danger text-center fs-5 ">Inserisci una lunghezza valida (8-20 caratteri)</p>';
