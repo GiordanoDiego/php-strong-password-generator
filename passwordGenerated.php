@@ -1,7 +1,6 @@
 <?php
     include __DIR__.'/functions.php'; 
     session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,28 +32,24 @@
         <main>
             <div class="container">
                 <div class="row">
-                    <div class="col-12" >
-                        <form action="" method="$_GET">
-                            <label for="lengthPSW">Inserisci lunghezza password da generare: </label>
-                            <input type="number" id="lengthPSW" min="8" max="20" name="lengthPSW">
-                            <button class=" ms-2 btn btn-success">Genera!</button>
-                        </form>
-                        <hr>
-                    </div>
-                    
-                    <!-- salvo lunghezza e password generata in sessione -->
                     <div class="col-12">
-                    <?php 
-                        if(isset($_GET["lengthPSW"]) && !empty($_GET["lengthPSW"])){ //controllo sl'array get[lengthPSW] esiste o se è vuoto
-                            $_SESSION["pswLength"] = $_GET["lengthPSW"];
-                            var_dump($_SESSION["pswLength"]);
-                            $_SESSION["pswGenerated"] = getName($_GET["lengthPSW"]);
-                            var_dump($_SESSION["pswGenerated"]);
-                            header('Location: ./passwordGenerated.php');
-                        }else{
-                            echo '<p class="text-danger text-center fs-5 ">Inserisci una lunghezza valida (8-20 caratteri)</p>';
-                        }    
-                    ?>
+                        <p>
+                            Lunghezza password scelta: 
+                            <?php 
+                                 echo $_SESSION["pswLength"];     
+                            ?>
+                        </p>
+                        <hr>
+                        <div>
+                            <h6>
+                                La password di lunghezza 
+                                <strong>
+                                    <?php echo $_SESSION["pswLength"];  ?>
+                                </strong> 
+                                generata casualmente è:
+                                <?php echo $_SESSION["pswGenerated"];?> 
+                            </h6>
+                        </div>
                     </div>
                 </div>
             </div>

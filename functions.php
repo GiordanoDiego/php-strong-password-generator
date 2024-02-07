@@ -1,6 +1,6 @@
 <?php   
-   
-   function getName($n) {
+    
+    function getName($n) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ?!-*$&';
         $randomString = '';
      
@@ -11,5 +11,6 @@
      
         return $randomString;
     };
+
 
 ?>
