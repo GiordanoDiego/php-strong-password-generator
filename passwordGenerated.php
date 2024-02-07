@@ -50,6 +50,11 @@
                                 <?php echo $_SESSION["pswGenerated"];?> 
                             </h6>
                         </div>
+                        <div class=" text-end ">
+                            <hr>
+                            Vuoi scegliere una lunghezza diversa? 
+                            <a href="./index.php">Clicca qui!</a>
+                        </div>
                     </div>
                 </div>
             </div>
